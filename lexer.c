@@ -87,25 +87,23 @@ void readTokens(char *code, int fileLength)
             printf("var\t\t29\n");
             i=i+3;
         }
-        if(isalpha(code[i]))
-           printf("%c  \t\t2\n", code[i]);
 
         if(isdigit(code[i]))
         {
 
             if((isdigit(code[i+4])) && (isdigit(code[i+3])) && (isdigit(code[i+2])) && (isdigit(code[i+1])))
             {
-               printf("%c%c%c%c%c \t3", code[i], code[i+1], code[i+2] ,code[i+3], code[i+4]);
+               printf("%c%c%c%c%c \t3\n", code[i], code[i+1], code[i+2] ,code[i+3], code[i+4]);
                i=i+4;
             }
             else if((isdigit(code[i+3])) && (isdigit(code[i+2]))&& (isdigit(code[i+1])))
             {
-               printf("%c%c%c%c   \t3", code[i], code[i+1], code[i+2], code[i+3]);
+               printf("%c%c%c%c   \t3\n", code[i], code[i+1], code[i+2], code[i+3]);
                i=i+3;
             }
             else if(isdigit(code[i+2]) && (isdigit(code[i+1])))
             {
-               printf("%c%c%c \t\t3", code[i], code[i+1], code[i+2]);
+               printf("%c%c%c \t\t3\n", code[i], code[i+1], code[i+2]);
                i=i+2;
             }
             else if(isdigit(code[i+1]))
@@ -145,6 +143,297 @@ void readTokens(char *code, int fileLength)
 
         if(code[i] == '.')
             printf("%c   \t\t19\n", code[i]);
+
+	// -----------------------------------  Alex's additions ----------------------------------------------
+
+        // (
+        
+        if((code[i] == '(')){
+        
+        printf("(   \t\t15\n");
+        
+        i+=1;
+        
+        }
+
+
+	// )
+
+        if((code[i] == ')')){
+
+        printf(")   \t\t16\n");
+
+        i+=1;
+
+        }
+
+	// :
+	
+	if(code[i] == ':' && code[i+1] != '=')
+        {
+            printf("%c \t\t34\n", code[i]);
+            i=i+1;
+        }
+
+
+	// =  
+	
+	if((code[i] == '=')){
+	
+	    printf("=   \t\t9 \n");
+	
+	        i+=1;
+	
+	}
+
+
+	
+	//!=  
+
+	if((code[i] == '!') && (code[i+1] == '=')){
+
+            printf("!=   \t10 \n");
+
+            i+=2;
+
+        }
+
+
+
+	//>=
+
+	if((code[i] == '>') && (code[i+1] == '=')){
+
+            printf(">=   \t\t14\n");
+
+            i+=2;
+
+        }
+
+
+
+	//<
+
+	if((code[i] == '<') && (code[i+1] != '=')){
+
+            printf("<   \t\t11\n");
+
+            i+=1;
+
+        }
+
+
+
+
+
+	//>
+
+	if((code[i] == '>') && (code[i+1] != '=')){
+
+            printf(">   \t\t13\n");
+
+            i+=1;
+
+        }
+
+
+
+
+
+	//<=
+	if((code[i] == '<') && (code[i+1] == '=')){
+
+            printf("<=   \t\t12\n");
+
+            i+=2;
+
+        }
+
+
+	//do
+	if((code[i] == 'd') && (code[i+1] == 'o')){
+
+            printf("do   \t\t26\n");
+
+            i+=2;
+
+        }
+
+
+
+
+
+	//if
+
+	if((code[i] == 'i') && (code[i+1] == 'f')){
+
+            printf("if   \t\t23\n");
+
+            i+=2;
+
+        }
+
+	//then
+
+	if((code[i] == 't') && (code[i+1] == 'h') && (code[i+2] == 'e') && (code[i+3] == 'n')) {
+
+            printf("then   \t\t24\n");
+
+            i+=4;
+
+        }
+
+
+
+
+	//while
+
+	if((code[i] == 'w') && (code[i+1] == 'h') && (code[i+2] == 'i') && (code[i+3] == 'l') && (code[i+4] == 'e')){
+
+            printf("while   \t25\n");
+
+            i=i+5;
+
+        }
+
+	//call
+
+
+	if((code[i] == 'c') && (code[i+1] == 'a') && (code[i+2] == 'l') && (code[i+3] == 'l')) {
+
+            printf("call   \t\t27\n");
+
+            i+=4;
+
+        }
+
+
+
+
+	//else
+
+	if((code[i] == 'e') && (code[i+1] == 'l') && (code[i+2] == 's') && (code[i+3] == 'e')) {
+
+            printf("else   \t\t33\n");
+
+            i+=4;
+
+        }
+
+
+
+
+
+	//const
+
+
+
+	if((code[i] == 'c') && (code[i+1] == 'o') && (code[i+2] == 'n') && (code[i+3] == 's') && (code[i+4] == 't')){
+
+            printf("const   \t28\n");
+
+            i=i+5;
+
+        }
+
+
+
+	//procedure
+
+	if((code[i] == 'p') && (code[i+1] == 'r') && (code[i+2] == 'o') && (code[i+3] == 'c') && (code[i+4] == 'e') && (code[i+5] == 'd') && (code[i+6] == 'u') && 
+	(code[i+7] == 'r') && (code[i+8] == 'e')){
+
+            printf("procedure   \t30\n");
+
+            i+=8;
+
+        }
+
+
+
+
+	//odd
+
+
+
+	if((code[i] == 'o') && (code[i+1] == 'l') && (code[i+2] == 'd') && (code[i+3] == 'd')) {
+
+            printf("odd   \t\t8\n");
+
+            i+=3;
+
+        }
+
+
+
+
+
+	//read
+
+	if((code[i] == 'r') && (code[i+1] == 'e') && (code[i+2] == 'a') && (code[i+3] == 'd')) {
+
+            printf("read   \t32\n");
+
+            i+=4;
+
+        }
+
+
+
+	//write
+
+	if((code[i] == 'w') && (code[i+1] == 'r') && (code[i+2] == 'i') && (code[i+3] == 't') && (code[i+4] == 'e')){
+
+            printf("write   \t31\n");
+
+            i=i+5;
+
+        }
+
+
+	//null
+
+	if((code[i] == 'n') && (code[i+1] == 'u') && (code[i+2] == 'l') && (code[i+3] == 'l')) {
+
+            printf("null   \t\t1\n");
+
+            i+=4;
+
+        }
+
+
+
+
+	// ----------------------------------- end of Alex's additions ----------------------------------------
+	//
+	if(isalpha(code[i]))
+        {
+
+         if((isalpha(code[i+4])) && (isalpha(code[i+3])) && (isalpha(code[i+2])) && (isalpha(code[i+1])))
+            {
+               printf("%c%c%c%c%c \t\t2\n", code[i], code[i+1], code[i+2] ,code[i+3], code[i+4]);
+               i=i+4;
+            }
+            else if((isalpha(code[i+3])) && (isalpha(code[i+2]))&& (isalpha(code[i+1])))
+            {
+               printf("%c%c%c%c   \t\t2\n", code[i], code[i+1], code[i+2], code[i+3]);
+               i=i+3;
+            }
+            else if(isalpha(code[i+2]) && (isalpha(code[i+1])))
+            {
+               printf("%c%c%c \t\t2\n", code[i], code[i+1], code[i+2]);
+               i=i+2;
+            }
+            else if(isalpha(code[i+1]))
+            {
+                printf("%c%c \t\t2\n", code[i], code[i+1]);
+                i=i+1;
+            }
+            else
+                printf("%c  \t\t2\n", code[i]);
+        }
+
+
 
     }
 
